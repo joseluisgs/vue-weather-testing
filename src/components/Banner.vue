@@ -1,7 +1,7 @@
 <template>
   <!-- Mostramos con el color adecuado si nos llega un mensaje -->
   <div v-show="bannerMessage" :style="bannerBackgroundColor">
-    <span id="errorMessageClear" v-on:click="clearBannerMessage">Clear</span>
+    <span id="errorMessageClear" @click="clearBannerMessage">Clear</span>
     <p>{{ bannerMessage }}</p>
   </div>
 </template>
@@ -65,7 +65,7 @@ div {
 }
 
 #errorMessageClear:hover {
-  color: rgb(242, 245, 98);
+  color: rgb(160, 255, 207);
   cursor: pointer;
 }
 </style>

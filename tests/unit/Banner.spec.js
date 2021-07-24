@@ -3,8 +3,7 @@ import { shallowMount } from '@vue/test-utils';
 import Banner from '@/components/Banner.vue';
 
 describe('Banner.vue Test', () => {
-  
-  it('Muestra el banner por defecto: Vacío y tipo Info', () => {
+  test('Muestra el banner por defecto: Vacío y tipo Info', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
       propsData: {
@@ -22,7 +21,7 @@ describe('Banner.vue Test', () => {
     expect(wrapper.vm.bannerBackgroundColor).toMatch('blue');
   });
 
-  it('Muestra el banner de Error con mensaje', () => {
+  test('Muestra el banner de Error con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
       propsData: {
@@ -37,7 +36,7 @@ describe('Banner.vue Test', () => {
     expect(wrapper.vm.bannerBackgroundColor).toMatch('red');
   });
 
-  it('Muestra el banner de Éxito con mensaje', () => {
+  test('Muestra el banner de Éxito con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
       propsData: {
@@ -52,7 +51,7 @@ describe('Banner.vue Test', () => {
     expect(wrapper.vm.bannerBackgroundColor).toMatch('green');
   });
 
-  it('Muestrael banner de Información con mensaje', () => {
+  test('Muestrael banner de Información con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
       propsData: {
@@ -67,7 +66,7 @@ describe('Banner.vue Test', () => {
     expect(wrapper.vm.bannerBackgroundColor).toMatch('blue');
   });
 
-  it('Emite el evento clear-banner al ser pulsado span', () => {
+  test('Emite el evento clear-banner al ser pulsado span', () => {
     // renderizamos el componente
     const wrapper = shallowMount(Banner, {
       propsData: {

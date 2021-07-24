@@ -1,17 +1,18 @@
 <template>
   <div class="home">
     <!-- Heade con propiedad de título -->
-    <app-header class="header" v-bind:title="title"></app-header>
+    <app-header class="header" :title="title"></app-header>
     <!-- Banner con propiedades mensaje y tipo, y que procesa el evento clear-banner -->
     <app-banner
       class="banner"
-      v-bind:bannerMessage="messageToDisplay"
-      v-bind:bannerType="messageType"
-      v-on:clear-banner="clearMessage"
+      :bannerMessage="messageToDisplay"
+      :bannerType="messageType"
+      @clear-banner="clearMessage"
     ></app-banner>
+    <app-weather-search class="weather-search" @search-city="searchCity"></app-weather-search>
     Vue Testing
     <!-- Footer con propieda de mensaje -->
-    <app-footer class="footer" v-bind:message="footerMessage"></app-footer>
+    <app-footer class="footer" :message="footerMessage"></app-footer>
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import { defineComponent } from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
+import Search from '@/components/Search.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -28,6 +30,7 @@ export default defineComponent({
     'app-header': Header,
     'app-footer': Footer,
     'app-banner': Banner,
+    'app-weather-search': Search,
   },
   // Mis datos
   data: () => ({
@@ -37,7 +40,7 @@ export default defineComponent({
     footerMessage: 'joseluisgs 2021',
 
     // Mensaje del banner
-    messageToDisplay: 'Pepe',
+    messageToDisplay: '',
     // Tipo del banner (Info, Success o Error)
     messageType: 'Info',
   }),
@@ -47,6 +50,10 @@ export default defineComponent({
     clearMessage() {
       this.messageToDisplay = '';
       this.messageType = 'Info';
+    },
+    // Busca una ciudad. Maneja el evento search-city
+    searchCity(inputCity: string) {
+      console.log(inputCity);
     },
   },
 });

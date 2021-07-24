@@ -1,8 +1,25 @@
 <template>
-  <div class="home">
-    <app-header class="header" v-bind:title="title"></app-header>
-    <app-footer class="footer" v-bind:message="footerMessage"></app-footer>
-    Vue Testing
+  <div id="home" class="grid-container">
+    <!-- Heade con propiedad de título -->
+    <app-header class="header" :title="title"></app-header>
+    <!-- Banner con propiedades mensaje y tipo, y que procesa el evento clear-banner -->
+    <app-banner
+      class="banner"
+      :bannerMessage="messageToDisplay"
+      :bannerType="messageType"
+      @clear-banner="clearMessage"
+    ></app-banner>
+    <!-- Buscador, emite el evento pasando la ciudd que tiene -->
+    <app-weather-search class="weather-search" @search-city="searchCity"></app-weather-search>
+    <!-- Resultados del tiempo -->
+    <app-weather-results
+      class="weather-results"
+      v-bind="weatherData"
+      v-if="validWeatherData"
+      v-on:clear-weather-data="resetData"
+    ></app-weather-results>
+    <!-- Footer con propieda de mensaje -->
+    <app-footer class="footer" :message="footerMessage"></app-footer>
   </div>
 </template>
 
@@ -10,6 +27,9 @@
 import { defineComponent } from 'vue';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import Banner from '@/components/Banner.vue';
+import Search from '@/components/Search.vue';
+import Weather from '@/components/Weather.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -17,11 +37,105 @@ export default defineComponent({
   components: {
     'app-header': Header,
     'app-footer': Footer,
+    'app-banner': Banner,
+    'app-weather-search': Search,
+    'app-weather-results': Weather,
   },
   // Mis datos
   data: () => ({
+    // Título de la App
     title: 'Vue Weather App',
+    // Mensaje del Footer
     footerMessage: 'joseluisgs 2021',
+
+    // Mensaje del banner
+    messageToDisplay: '',
+    // Tipo del banner (Info, Success o Error)
+    messageType: 'Info',
+    // Objeto de información meteorológica
+    // Weather data collected from openweathermap.org
+    weatherData: {
+      city: '',
+      weatherSummary: '',
+      weatherDescription: '',
+      currentTemperature: 0.0,
+      highTemperature: 0.0,
+      lowTemperature: 0.0,
+    },
+    // Nos indica si los datos se han cargado
+    validWeatherData: true,
   }),
+  // Mis métodos
+  methods: {
+    // Limpia el banner
+    clearMessage() {
+      this.messageToDisplay = '';
+      this.messageType = 'Info';
+    },
+    // Busca una ciudad. Maneja el evento search-city
+    searchCity(inputCity: string) {
+      console.log(inputCity);
+    },
+    // Limpia los datos
+    resetData() {
+      this.weatherData = {
+        city: '',
+        weatherSummary: '',
+        weatherDescription: '',
+        currentTemperature: 0.0,
+        lowTemperature: 0.0,
+        highTemperature: 0.0,
+      };
+      this.validWeatherData = false;
+    },
+  },
 });
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+  * {
+  box-sizing:border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #f1f3f5;
+  font-family: segoe ui,helvetica neue,sans-serif;
+  color: #345;
+  overflow-x: hidden;
+}
+
+/* CSS Grid Styling
+*******************/
+.header {
+  grid-area: header;
+}
+.banner {
+  grid-area: banner;
+}
+.weather-search {
+  grid-area: search;
+}
+.weather-results {
+  grid-area: results;
+}
+.footer {
+  grid-area: footer;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 10% 35% 35% 10%;
+  grid-auto-rows: minmax(20px, auto);
+  grid-gap: 10px;
+  max-width: 1080px;
+  margin: auto;
+  grid-template-areas:
+    "header   header     header    header"
+    "banner   banner     banner    banner"
+    "...      search     search    ..."
+    "...      results    results   ..."
+    "footer   footer     footer    footer";
+}
+</style>

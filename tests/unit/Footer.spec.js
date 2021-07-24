@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
 import { shallowMount } from '@vue/test-utils';
 // Importamos el componente
 import Footer from '@/components/Footer.vue';
 
 describe('Footer.vue Test', () => {
-  it('Renderiza el mensaje si está creado', () => {
+  test('Renderiza el mensaje si está creado', () => {
     const expectedValue = 'joseluisgs 2021';
     // Renderizado el componente
     const wrapper = shallowMount(Footer, {

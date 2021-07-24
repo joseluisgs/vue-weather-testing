@@ -1,10 +1,9 @@
-/* eslint-disable no-undef */
 import { shallowMount } from '@vue/test-utils';
 // Importamos el componente
 import Header from '@/components/Header.vue';
 
 describe('Header.vue Test', () => {
-  it('Renderiza el mensaje si está creado', () => {
+  test('Renderiza el mensaje si está creado', () => {
     const expectedValue = 'Vue Project App';
     // Renderizado el componente
     const wrapper = shallowMount(Header, {

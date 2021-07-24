@@ -1,21 +1,21 @@
 /* eslint-disable no-undef */
 import { shallowMount } from '@vue/test-utils';
 // Importamos el componente
-import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
-describe('Header.vue Test', () => {
+describe('Footer.vue Test', () => {
   it('Renderiza el mensaje si está creado', () => {
     // Renderizado el componente
-    const wrapper = shallowMount(Header, {
+    const wrapper = shallowMount(Footer, {
       propsData: {
-        title: 'Vue Project',
+        message: 'joseluisgs 2021',
       },
     });
 
     // Comprobamos el nombre del componente
-    expect(wrapper.vm.$options.name).toMatch('Header');
+    expect(wrapper.vm.$options.name).toMatch('Footer');
 
     // Comprobamos que se ha renderizado el nombre indicado
-    expect(wrapper.text()).toMatch('Vue Project');
+    expect(wrapper.text()).toMatch('joseluisgs 2021');
   });
 });

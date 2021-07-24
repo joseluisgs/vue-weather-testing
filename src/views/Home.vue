@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <app-header class="header" v-bind:title="title"></app-header>
+    <app-footer class="footer" v-bind:message="footerMessage"></app-footer>
+    Vue Testing
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 export default defineComponent({
   name: 'Home',
+  // Mis componentes
   components: {
-    HelloWorld,
+    'app-header': Header,
+    'app-footer': Footer,
   },
+  // Mis datos
+  data: () => ({
+    title: 'Vue Weather App',
+    footerMessage: 'joseluisgs 2021',
+  }),
 });
 </script>

@@ -7,7 +7,7 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
 [![Licence](https://img.shields.io/github/license/joseluisgs/photo-gallery-ionic)](./LICENSE)
 ![GitHub](https://img.shields.io/github/last-commit/joseluisgs/vue-weather-testing)
 
-![Portada](https://i2.wp.com/tecnops.es/wp-content/uploads/2019/10/vuetestutils.jpg)
+![Portada](https://dev-to-uploads.s3.amazonaws.com/i/3p0iqqls0b80s8mrg3cr.png)
 - [vue-weather-testing](#vue-weather-testing)
   - [Sobre el proyecto](#sobre-el-proyecto)
   - [Project setup](#project-setup)

@@ -5,10 +5,11 @@ import Footer from '@/components/Footer.vue';
 
 describe('Footer.vue Test', () => {
   it('Renderiza el mensaje si está creado', () => {
+    const expectedValue = 'joseluisgs 2021';
     // Renderizado el componente
     const wrapper = shallowMount(Footer, {
       propsData: {
-        message: 'joseluisgs 2021',
+        message: expectedValue,
       },
     });
 
@@ -16,6 +17,6 @@ describe('Footer.vue Test', () => {
     expect(wrapper.vm.$options.name).toMatch('Footer');
 
     // Comprobamos que se ha renderizado el nombre indicado
-    expect(wrapper.text()).toMatch('joseluisgs 2021');
+    expect(wrapper.text()).toMatch(expectedValue);
   });
 });

@@ -5,10 +5,11 @@ import Header from '@/components/Header.vue';
 
 describe('Header.vue Test', () => {
   it('Renderiza el mensaje si está creado', () => {
+    const expectedValue = 'Vue Project App';
     // Renderizado el componente
     const wrapper = shallowMount(Header, {
       propsData: {
-        title: 'Vue Project',
+        title: expectedValue,
       },
     });
 
@@ -16,6 +17,6 @@ describe('Header.vue Test', () => {
     expect(wrapper.vm.$options.name).toMatch('Header');
 
     // Comprobamos que se ha renderizado el nombre indicado
-    expect(wrapper.text()).toMatch('Vue Project');
+    expect(wrapper.text()).toMatch(expectedValue);
   });
 });

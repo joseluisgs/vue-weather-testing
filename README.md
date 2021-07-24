@@ -1,5 +1,5 @@
 # vue-weather-testing
-Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo para Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo bajo TDD usando Jest y Cypress. 
+Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo para Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo bajo TDD usando Jest y Cypress dentro de Vue Test Utils. 
 
 [![Vue Ready](https://img.shields.io/badge/Vue.js-%20Ready-%2342b983)](https://es.vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178c6)](https://www.typescriptlang.org/)
@@ -10,6 +10,8 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
 ![Portada](https://dev-to-uploads.s3.amazonaws.com/i/3p0iqqls0b80s8mrg3cr.png)
 - [vue-weather-testing](#vue-weather-testing)
   - [Sobre el proyecto](#sobre-el-proyecto)
+  - [Testeando con Vue Test Utils](#testeando-con-vue-test-utils)
+    - [ShallowMount vs Mount](#shallowmount-vs-mount)
   - [Project setup](#project-setup)
     - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
     - [Compiles and minifies for production](#compiles-and-minifies-for-production)
@@ -22,11 +24,23 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
   - [Licencia](#licencia)
 
 ## Sobre el proyecto
-El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress.
+El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress dentro de Vue Test Utils.
 
 Este proyecto puede verse como una continuación del contenido mostrado en:
 - [Testing JS con JEST](https://github.com/joseluisgs/testing-js-jest)
 - [Testing JS con Cypress](https://github.com/joseluisgs/testing-js-cypress)
+
+## Testeando con Vue Test Utils
+
+### ShallowMount vs Mount
+- shallowMount: Nos permite cargar un componente de manera individual para testearlo, creando un wrapper pero sin componentes hijos.
+- mount: Carga el componente y sus componentes hijos.
+
+shallowMount() es mejor para probar un componente individual de forma aislada, ya que los componentes secundarios (hijos) se eliminan. Es ideal para las pruebas unitarias. Además, el uso de shallowMount() para probar un componente con muchos componentes secundarios (hijos) puede mejorar el tiempo de ejecución de la prueba unitaria, ya que no hay ningún costo (en términos de tiempo) para renderizar o usar los componentes secundarios (hijos).
+
+mount() es útil cuando desea incluir la prueba del comportamiento de los componentes secundarios (hijos) en el test.
+
+El objeto wrapper nos permite probar todos los aspectos del HTML generado por el componente Vue y todas las propiedades (como los datos o métodos) del componente Vue.
 
 ## Project setup
 ```

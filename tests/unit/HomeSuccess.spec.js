@@ -25,10 +25,6 @@ const dataSuccess = {
   },
 };
 
-const dataFailure = {
-  status: 404,
-};
-
 // Creamos un Mock de Axios con mis valores, hay dos formas,
 // directa, ver aquí abajo, o usando el beforeEach con mockImplementationOnce
 jest.mock('axios');
@@ -131,7 +127,7 @@ describe('Comportamiento de componentes ante una petición HTTP GET Satisfactori
     jest.clearAllMocks();
   });
 
-  test('Iniciliza los dos botones como desabilitados cuando no hay datos cargados', () => {
+  test('Iniciliza los dos botones como deshabilitados cuando no hay datos cargados', () => {
     // Renderizado el componente con hijos
     const wrapper = mount(Home);
 
@@ -206,50 +202,3 @@ describe('Comportamiento de componentes ante una petición HTTP GET Satisfactori
     expect(botones[2].element.disabled).toBeFalsy();
   });
 });
-
-// describe('Home.vue Test HTTP GET No Resuelta', () => {
-//   // Antes de cada test
-//   beforeEach(() => {
-//     // Simulamos una petición que no se ha podido resolver
-//     // axios.get.mockImplementationOnce(() => Promise.reject(new Error('BAD REQUEST')));
-//     // axios.get.mockRejectedValueOnce(new Error('BAD REQUEST'));
-//     // axios.get.mockImplementationOnce(() => Promise.resolve(dataFailure));
-//     // axios.mockRejectedValueOnce(new Error(dataFailure));
-//   });
-
-//   // Despues de cada test
-//   afterEach(() => {
-//     jest.resetModules();
-//     jest.clearAllMocks();
-//   });
-
-//   test('No Carga los datos ante una petición HTTP GET no resuelta', async () => {
-//     // Renderizado el componente
-//     const wrapper = shallowMount(Home);
-//     // comprobamos el nombre del componente
-//     expect(wrapper.vm.$options.name).toMatch('Home');
-
-//     // Buscamos el lugar
-//     wrapper.vm.searchCity('Cazorla');
-
-//     expect(axios.get).toHaveBeenCalledTimes(1);
-//     expect(axios.get).toBeCalledWith(expect.stringMatching(/Cazorla/));
-
-//     await flushPromises();
-//     await nextTick();
-
-//     expect(wrapper.vm.weatherData.city).toMatch(/^$/);
-//     expect(wrapper.vm.weatherData.weatherSummary).toMatch(/^$/);
-//     expect(wrapper.vm.weatherData.weatherDescription).toMatch(/^$/);
-//     expect(wrapper.vm.weatherData.currentTemperature).toEqual(0);
-//     expect(wrapper.vm.weatherData.lowTemperature).toEqual(0);
-//     expect(wrapper.vm.weatherData.highTemperature).toEqual(0);
-//     expect(wrapper.vm.validWeatherData).toBe(false);
-
-//     // Comprobamos que el banner es de error
-//     expect(wrapper.vm.messageToDisplay).toMatch('¡ERROR! No se ha podido conseguir información meteorológica de Cazorla!');
-//     expect(wrapper.vm.messageType).toMatch('Error');
-
-//     expect(global.console.log).toHaveBeenCalledWith('BAD REQUEST');
-//   });
-// });

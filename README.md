@@ -15,6 +15,7 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
       - [ShallowMount vs Mount](#shallowmount-vs-mount)
       - [Uso de Mocks](#uso-de-mocks)
       - [Estructura de un Test](#estructura-de-un-test)
+    - [Code Coverage](#code-coverage)
   - [Project setup](#project-setup)
     - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
     - [Compiles and minifies for production](#compiles-and-minifies-for-production)
@@ -91,7 +92,19 @@ describe('Tests para el ... Componente', () => {
   ...
 })
 ```
-
+### Code Coverage
+Si quieres tener un informe de la covertura de tu código (%) añade estas líneas a tu fichero jest.config.js
+```js
+collectCoverage: true,
+collectCoverageFrom: [
+  "src/**/*.{js,vue}",
+  "!**/node_modules/**"
+],
+coverageReporters: [
+  "html",
+  "text-summary"
+]
+```
 
 ## Project setup
 ```

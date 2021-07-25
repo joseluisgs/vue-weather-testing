@@ -107,7 +107,7 @@ export default defineComponent({
       } catch (error) {
         // Si hay error
         this.messageType = 'Error';
-        this.messageToDisplay = `¡ERROR! No se ha podido conseguir información meteorlógica de ${inputCity}!`;
+        this.messageToDisplay = `¡ERROR! No se ha podido conseguir información meteorológica de ${inputCity}!`;
         console.log(error.message);
         this.resetData();
       } finally {
@@ -125,8 +125,8 @@ export default defineComponent({
         highTemperature: 0.0,
       };
       this.validWeatherData = false;
-      this.messageType = 'Info';
-      this.messageToDisplay = '';
+      // this.messageType = 'Info';
+      // this.messageToDisplay = '';
     },
   },
 });

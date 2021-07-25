@@ -12,6 +12,7 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
   - [Sobre el proyecto](#sobre-el-proyecto)
   - [Testeando con Vue Test Utils](#testeando-con-vue-test-utils)
     - [ShallowMount vs Mount](#shallowmount-vs-mount)
+    - [Uso de Mocks](#uso-de-mocks)
   - [Project setup](#project-setup)
     - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
     - [Compiles and minifies for production](#compiles-and-minifies-for-production)
@@ -41,6 +42,13 @@ shallowMount() es mejor para probar un componente individual de forma aislada, y
 mount() es útil cuando desea incluir la prueba del comportamiento de los componentes secundarios (hijos) en el test.
 
 El objeto wrapper nos permite probar todos los aspectos del HTML generado por el componente Vue y todas las propiedades (como los datos o métodos) del componente Vue.
+
+### Uso de Mocks
+Simulamos las llamadas a la API REST sin salir al exterior. De esta manera: 
+- Simulamos peticiones a la API REST satisfactorias
+- Simulamos llamadas a la API REST que fallán
+
+Usando los mocks, podemos ver cómo reaccionan nuestros componentes sin necesidad de "gastar" tiempo en llamar constantemente al servicio externo.
 
 ## Project setup
 ```

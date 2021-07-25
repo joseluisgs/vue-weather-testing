@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import Servicio from '@/services/Weather';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
@@ -47,13 +48,11 @@ export default defineComponent({
     title: 'Vue Weather App',
     // Mensaje del Footer
     footerMessage: 'joseluisgs 2021',
-
     // Mensaje del banner
     messageToDisplay: '',
     // Tipo del banner (Info, Success o Error)
     messageType: 'Info',
-    // Objeto de información meteorológica
-    // Weather data collected from openweathermap.org
+    // Objeto de información meteorológica openweathermap.org
     weatherData: {
       city: '',
       weatherSummary: '',
@@ -63,8 +62,17 @@ export default defineComponent({
       lowTemperature: 0.0,
     },
     // Nos indica si los datos se han cargado
-    validWeatherData: true,
+    validWeatherData: false,
   }),
+  // Ciclo de validate
+  // Al crearme
+  created() {
+    // comprobamos la API KEY
+    if (!Servicio.getKey()) {
+      this.messageType = 'Error';
+      this.messageToDisplay = 'Error! No OpenWeather.org API KEY';
+    }
+  },
   // Mis métodos
   methods: {
     // Limpia el banner
@@ -73,8 +81,30 @@ export default defineComponent({
       this.messageType = 'Info';
     },
     // Busca una ciudad. Maneja el evento search-city
-    searchCity(inputCity: string) {
-      console.log(inputCity);
+    async searchCity(inputCity: string) {
+      // Obtenemos la respuesta
+      try {
+        const response = await Servicio.getInfo(inputCity);
+        // Respuesta correcta
+        this.messageType = 'Success';
+        this.messageToDisplay = `Success! Meto Info from ${response.name}`;
+        // Procesamos los datos
+        this.weatherData.city = response.name;
+        this.weatherData.weatherSummary = response.weather[0].main;
+        this.weatherData.weatherDescription = response.weather[0].description;
+        this.weatherData.currentTemperature = response.main.temp;
+        this.weatherData.lowTemperature = response.main.tempMin;
+        this.weatherData.highTemperature = response.main.tempMax;
+        this.validWeatherData = true;
+      } catch (error) {
+        // Si hay error
+        this.messageType = 'Error';
+        this.messageToDisplay = `ERROR! Can't find info from ${inputCity}!`;
+        console.log(error.message);
+        // this.resetData();
+      } finally {
+        console.log('¡HTTP GET Listo!');
+      }
     },
     // Limpia los datos
     resetData() {
@@ -87,6 +117,8 @@ export default defineComponent({
         highTemperature: 0.0,
       };
       this.validWeatherData = false;
+      this.messageType = 'Info';
+      this.messageToDisplay = '';
     },
   },
 });

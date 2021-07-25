@@ -7,7 +7,7 @@ describe('Header.vue Test', () => {
     const expectedValue = 'Vue Project App';
     // Renderizado el componente
     const wrapper = shallowMount(Header, {
-      propsData: {
+      props: {
         title: expectedValue,
       },
     });

@@ -6,7 +6,7 @@ describe('Banner.vue Test', () => {
   test('Muestra el banner por defecto: Vacío y tipo Info', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
-      propsData: {
+      props: {
         bannerMessage: '',
         bannerType: '',
       },
@@ -24,7 +24,7 @@ describe('Banner.vue Test', () => {
   test('Muestra el banner de Error con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
-      propsData: {
+      props: {
         bannerMessage: 'Banner message 123',
         bannerType: 'Error',
       },
@@ -39,7 +39,7 @@ describe('Banner.vue Test', () => {
   test('Muestra el banner de Éxito con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
-      propsData: {
+      props: {
         bannerMessage: 'Banner message 456',
         bannerType: 'Success',
       },
@@ -54,7 +54,7 @@ describe('Banner.vue Test', () => {
   test('Muestrael banner de Información con mensaje', () => {
     // renderizamos el banner con sus propiedades
     const wrapper = shallowMount(Banner, {
-      propsData: {
+      props: {
         bannerMessage: 'Banner message 789',
         bannerType: 'Info',
       },
@@ -69,7 +69,7 @@ describe('Banner.vue Test', () => {
   test('Emite el evento clear-banner al ser pulsado span', () => {
     // renderizamos el componente
     const wrapper = shallowMount(Banner, {
-      propsData: {
+      props: {
         bannerMessage: 'Banner message 123',
         bannerType: 'Error',
       },

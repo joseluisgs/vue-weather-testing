@@ -7,7 +7,7 @@ describe('Footer.vue Test', () => {
     const expectedValue = 'joseluisgs 2021';
     // Renderizado el componente
     const wrapper = shallowMount(Footer, {
-      propsData: {
+      props: {
         message: expectedValue,
       },
     });

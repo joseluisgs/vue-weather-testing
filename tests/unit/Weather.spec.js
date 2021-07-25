@@ -16,7 +16,7 @@ describe('Weather.vue Test', () => {
   test('Inicializa con los elementos correctos', () => {
     // Renderizado el componente
     const wrapper = shallowMount(Weather, {
-      propsData: data,
+      props: data,
     });
 
     // comprobamos el nombre del componente

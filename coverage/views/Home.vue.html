@@ -22,9 +22,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.74% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/38</span>
+                <span class='fraction'>28/34</span>
             </div>
         
             
@@ -36,16 +36,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.59% </span>
+                <span class="strong">81.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>35/37</span>
+                <span class='fraction'>27/33</span>
             </div>
         
             
@@ -229,15 +229,7 @@
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
-<a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a>
-<a name='L176'></a><a href='#L176'>176</a>
-<a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -307,8 +299,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -323,18 +313,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -348,14 +332,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -363,9 +347,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -445,7 +429,7 @@
 &nbsp;
 &lt;script lang="ts"&gt;
 import { defineComponent } from 'vue';
-import axios from 'axios';
+import Servicio from '@/services/Weather';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
@@ -483,16 +467,14 @@ export default defineComponent({
     },
     // Nos indica si los datos se han cargado
     validWeatherData: false,
-    // API key openweathermap.org
-    openweathermapApiKey: 'b3435b6ecd502d0fbf9605a5f8b3343d',
   }),
   // Ciclo de validate
   // Al crearme
   created() {
     // comprobamos la API KEY
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.openweathermapApiKey === '') {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!Servicio.getKey()) {
 <span class="cstat-no" title="statement not covered" >      this.m</span>essageType = 'Error';
-<span class="cstat-no" title="statement not covered" >      this.m</span>essageToDisplay = '¡Error! No se dispone de la API Key de OpenWeather.org';
+<span class="cstat-no" title="statement not covered" >      this.m</span>essageToDisplay = 'Error! No OpenWeather.org API KEY';
     }
   },
   // Mis métodos
@@ -504,39 +486,33 @@ export default defineComponent({
     },
     // Busca una ciudad. Maneja el evento search-city
     async searchCity(inputCity: string) {
-      console.log(inputCity);
-      const lang = 'es';
-      const units = 'metric';
-      const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputCity}
-        &amp;units=${units}&amp;lang=${lang}&amp;APPID=${this.openweathermapApiKey}`;
       // Obtenemos la respuesta
       try {
-        const response = await axios.get(url);
+        const response = await Servicio.getInfo(inputCity);
         // Respuesta correcta
         this.messageType = 'Success';
-        this.messageToDisplay = `¡Éxito! Información meteorológica recibida de ${response.data.name}!`;
-        console.log(response);
+        this.messageToDisplay = `Success! Meto Info from ${response.name}`;
         // Procesamos los datos
-        this.weatherData.city = response.data.name;
-        this.weatherData.weatherSummary = response.data.weather[0].main;
-        this.weatherData.weatherDescription = response.data.weather[0].description;
-        this.weatherData.currentTemperature = response.data.main.temp;
-        this.weatherData.lowTemperature = response.data.main.temp_min;
-        this.weatherData.highTemperature = response.data.main.temp_max;
+        this.weatherData.city = response.name;
+        this.weatherData.weatherSummary = response.weather[0].main;
+        this.weatherData.weatherDescription = response.weather[0].description;
+        this.weatherData.currentTemperature = response.main.temp;
+        this.weatherData.lowTemperature = response.main.tempMin;
+        this.weatherData.highTemperature = response.main.tempMax;
         this.validWeatherData = true;
       } catch (error) {
         // Si hay error
         this.messageType = 'Error';
-        this.messageToDisplay = `¡ERROR! No se ha podido conseguir información meteorológica de ${inputCity}!`;
+        this.messageToDisplay = `ERROR! Can't find info from ${inputCity}!`;
         console.log(error.message);
-        this.resetData();
+        // this.resetData();
       } finally {
         console.log('¡HTTP GET Listo!');
       }
     },
     // Limpia los datos
-    resetData() {
-      this.weatherData = {
+    resetData<span class="fstat-no" title="function not covered" >() {</span>
+<span class="cstat-no" title="statement not covered" >      this.w</span>eatherData = {
         city: '',
         weatherSummary: '',
         weatherDescription: '',
@@ -544,9 +520,9 @@ export default defineComponent({
         lowTemperature: 0.0,
         highTemperature: 0.0,
       };
-      this.validWeatherData = false;
-      // this.messageType = 'Info';
-      // this.messageToDisplay = '';
+<span class="cstat-no" title="statement not covered" >      this.v</span>alidWeatherData = false;
+<span class="cstat-no" title="statement not covered" >      this.m</span>essageType = 'Info';
+<span class="cstat-no" title="statement not covered" >      this.m</span>essageToDisplay = '';
     },
   },
 });
@@ -606,7 +582,7 @@ body {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jul 25 2021 19:06:27 GMT+0200 (hora de verano de Europa central)
+                at Sun Jul 25 2021 21:30:09 GMT+0200 (hora de verano de Europa central)
             </div>
         </div>
         <script src="../prettify.js"></script>

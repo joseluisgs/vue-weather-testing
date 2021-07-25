@@ -1,5 +1,5 @@
 import { nextTick } from 'vue';
-import { shallowMount, mount, flushPromises } from '@vue/test-utils';
+import { shallowMount, flushPromises } from '@vue/test-utils';
 import axios from 'axios';
 
 // Importamos el componente

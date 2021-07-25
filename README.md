@@ -1,5 +1,5 @@
 # vue-weather-testing
-Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo para Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo bajo TDD usando Jest y Cypress. 
+Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo para Vue.js y OpenWeatherMap API y mostrar distintos mecanismos de la testeo bajo TDD usando Jest y Cypress dentro de Vue Test Utils. 
 
 [![Vue Ready](https://img.shields.io/badge/Vue.js-%20Ready-%2342b983)](https://es.vuejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178c6)](https://www.typescriptlang.org/)
@@ -10,6 +10,12 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
 ![Portada](https://dev-to-uploads.s3.amazonaws.com/i/3p0iqqls0b80s8mrg3cr.png)
 - [vue-weather-testing](#vue-weather-testing)
   - [Sobre el proyecto](#sobre-el-proyecto)
+  - [Testeando con Vue Test Utils](#testeando-con-vue-test-utils)
+    - [Jest](#jest)
+      - [ShallowMount vs Mount](#shallowmount-vs-mount)
+      - [Uso de Mocks](#uso-de-mocks)
+      - [Estructura de un Test](#estructura-de-un-test)
+    - [Code Coverage](#code-coverage)
   - [Project setup](#project-setup)
     - [Compiles and hot-reloads for development](#compiles-and-hot-reloads-for-development)
     - [Compiles and minifies for production](#compiles-and-minifies-for-production)
@@ -22,11 +28,83 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
   - [Licencia](#licencia)
 
 ## Sobre el proyecto
-El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress.
+El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress dentro de Vue Test Utils.
 
 Este proyecto puede verse como una continuación del contenido mostrado en:
 - [Testing JS con JEST](https://github.com/joseluisgs/testing-js-jest)
 - [Testing JS con Cypress](https://github.com/joseluisgs/testing-js-cypress)
+
+## Testeando con Vue Test Utils
+### Jest
+#### ShallowMount vs Mount
+- shallowMount: Nos permite cargar un componente de manera individual para testearlo, creando un wrapper pero sin componentes hijos.
+- mount: Carga el componente y sus componentes hijos.
+
+shallowMount() es mejor para probar un componente individual de forma aislada, ya que los componentes secundarios (hijos) se eliminan. Es ideal para las pruebas unitarias. Además, el uso de shallowMount() para probar un componente con muchos componentes secundarios (hijos) puede mejorar el tiempo de ejecución de la prueba unitaria, ya que no hay ningún costo (en términos de tiempo) para renderizar o usar los componentes secundarios (hijos).
+
+mount() es útil cuando desea incluir la prueba del comportamiento de los componentes secundarios (hijos) en el test.
+
+El objeto wrapper nos permite probar todos los aspectos del HTML generado por el componente Vue y todas las propiedades (como los datos o métodos) del componente Vue.
+
+#### Uso de Mocks
+Simulamos las llamadas a la API REST sin salir al exterior. De esta manera: 
+- Simulamos peticiones a la API REST satisfactorias
+- Simulamos llamadas a la API REST que fallán
+Usando los mocks, podemos ver cómo reaccionan nuestros componentes sin necesidad de "gastar" tiempo en llamar constantemente al servicio externo.
+
+#### Estructura de un Test
+```js
+import { shallowMount } from '@vue/test-utils'
+import App from '@/App.vue'  // Imposra el componente a testear
+import axios from 'axios'    // Imposta la librerías a mockear
+
+// Mockeamos las librerías que vamos a usar
+jest.mock('axios')
+
+// Describimos la suit de test
+describe('Tests para el ... Componente', () => {
+  let wrapper = null
+
+  // Antes de cada test
+  beforeEach(() => {
+    // Creamos los mocks 
+
+    // renderizamos el componente
+    wrapper = shallowMount(App)
+  })
+
+  // Despues de cada test
+  afterEach(() => {
+    jest.resetModules()
+    jest.clearAllMocks()  // Si estas mockeando una librería
+  })
+
+  test('Caso de Test X', () => {
+    // comprobamos el nombre del componente
+    expect(wrapper.vm.$options.name).toMatch('...')
+
+  })
+
+  test('Caso de Test Y', () => {
+    ...
+  })
+
+  ...
+})
+```
+### Code Coverage
+Si quieres tener un informe de la covertura de tu código (%) añade estas líneas a tu fichero jest.config.js
+```js
+collectCoverage: true,
+collectCoverageFrom: [
+  "src/**/*.{js,vue}",
+  "!**/node_modules/**"
+],
+coverageReporters: [
+  "html",
+  "text-summary"
+]
+```
 
 ## Project setup
 ```
@@ -74,7 +152,7 @@ Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twi
 </p>
 <p>
     <a href="https://twitter.com/joseluisgonsan" target="_blank">
-        <img src="https://pitlochryfestivaltheatre.com/wp-content/uploads/2020/04/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" 
+        <img src="https://i.imgur.com/U4Uiaef.png" 
     height="30">
     </a> &nbsp;&nbsp;
     <a href="https://github.com/joseluisgs" target="_blank">

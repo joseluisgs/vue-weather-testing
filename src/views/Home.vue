@@ -26,7 +26,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Servicio from '@/services/Weather';
-import axios from 'axios';
+import IWeather from '@/models/Weather';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
@@ -83,7 +83,6 @@ export default defineComponent({
     },
     // Busca una ciudad. Maneja el evento search-city
     async searchCity(inputCity: string) {
-      console.log(inputCity);
       // Obtenemos la respuesta
       try {
         const response = await Servicio.getInfo(inputCity);
@@ -95,8 +94,8 @@ export default defineComponent({
         this.weatherData.weatherSummary = response.weather[0].main;
         this.weatherData.weatherDescription = response.weather[0].description;
         this.weatherData.currentTemperature = response.main.temp;
-        this.weatherData.lowTemperature = response.main.temp_min;
-        this.weatherData.highTemperature = response.main.temp_max;
+        this.weatherData.lowTemperature = response.main.tempMin;
+        this.weatherData.highTemperature = response.main.tempMax;
         this.validWeatherData = true;
       } catch (error) {
         // Si hay error

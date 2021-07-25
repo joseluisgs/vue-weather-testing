@@ -46,7 +46,7 @@ describe('Home.vue Test HTTP GET No Resuelta', () => {
     expect(wrapper.vm.validWeatherData).toBe(false);
 
     // Comprobamos que el banner es de error
-    expect(wrapper.vm.messageToDisplay).toMatch('¡ERROR! No se ha podido conseguir información meteorológica de Cazorla!');//
+    expect(wrapper.vm.messageToDisplay).toMatch('ERROR! Can\'t find info from Cazorla');//
     expect(wrapper.vm.messageType).toMatch('Error');
 
     // expect(global.console.log).toHaveBeenCalledWith('BAD REQUEST');

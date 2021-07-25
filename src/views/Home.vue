@@ -26,7 +26,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Servicio from '@/services/Weather';
-import IWeather from '@/models/Weather';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
@@ -71,7 +70,7 @@ export default defineComponent({
     // comprobamos la API KEY
     if (!Servicio.getKey()) {
       this.messageType = 'Error';
-      this.messageToDisplay = '¡Error! No se dispone de la API Key de OpenWeather.org';
+      this.messageToDisplay = 'Error! No OpenWeather.org API KEY';
     }
   },
   // Mis métodos
@@ -88,7 +87,7 @@ export default defineComponent({
         const response = await Servicio.getInfo(inputCity);
         // Respuesta correcta
         this.messageType = 'Success';
-        this.messageToDisplay = `¡Éxito! Información meteorológica recibida de ${response.name}!`;
+        this.messageToDisplay = `Success! Meto Info from ${response.name}`;
         // Procesamos los datos
         this.weatherData.city = response.name;
         this.weatherData.weatherSummary = response.weather[0].main;
@@ -100,7 +99,7 @@ export default defineComponent({
       } catch (error) {
         // Si hay error
         this.messageType = 'Error';
-        this.messageToDisplay = `¡ERROR! No se ha podido conseguir información meteorológica de ${inputCity}!`;
+        this.messageToDisplay = `ERROR! Can't find info from ${inputCity}!`;
         console.log(error.message);
         // this.resetData();
       } finally {

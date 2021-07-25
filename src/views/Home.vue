@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 import Banner from '@/components/Banner.vue';
@@ -47,13 +48,11 @@ export default defineComponent({
     title: 'Vue Weather App',
     // Mensaje del Footer
     footerMessage: 'joseluisgs 2021',
-
     // Mensaje del banner
     messageToDisplay: '',
     // Tipo del banner (Info, Success o Error)
     messageType: 'Info',
-    // Objeto de información meteorológica
-    // Weather data collected from openweathermap.org
+    // Objeto de información meteorológica openweathermap.org
     weatherData: {
       city: '',
       weatherSummary: '',
@@ -63,8 +62,19 @@ export default defineComponent({
       lowTemperature: 0.0,
     },
     // Nos indica si los datos se han cargado
-    validWeatherData: true,
+    validWeatherData: false,
+    // API key openweathermap.org
+    openweathermapApiKey: 'b3435b6ecd502d0fbf9605a5f8b3343d',
   }),
+  // Ciclo de validate
+  // Al crearme
+  created() {
+    // comprobamos la API KEY
+    if (this.openweathermapApiKey === '') {
+      this.messageType = 'Error';
+      this.messageToDisplay = '¡Error! No se dispone de la API Key de OpenWeather.org';
+    }
+  },
   // Mis métodos
   methods: {
     // Limpia el banner
@@ -73,8 +83,36 @@ export default defineComponent({
       this.messageType = 'Info';
     },
     // Busca una ciudad. Maneja el evento search-city
-    searchCity(inputCity: string) {
+    async searchCity(inputCity: string) {
       console.log(inputCity);
+      const lang = 'es';
+      const units = 'metric';
+      const url = `http://api.openweathermap.org/data/2.5/weather?q=${inputCity}
+        &units=${units}&lang=${lang}&APPID=${this.openweathermapApiKey}`;
+      // Obtenemos la respuesta
+      try {
+        const response = await axios.get(url);
+        // Respuesta correcta
+        this.messageType = 'Success';
+        this.messageToDisplay = `¡Éxito! Información meteorológica recibida de ${response.data.name}!`;
+        console.log(response);
+        // Procesamos los datos
+        this.weatherData.city = response.data.name;
+        this.weatherData.weatherSummary = response.data.weather[0].main;
+        this.weatherData.weatherDescription = response.data.weather[0].description;
+        this.weatherData.currentTemperature = response.data.main.temp;
+        this.weatherData.lowTemperature = response.data.main.temp_min;
+        this.weatherData.highTemperature = response.data.main.temp_max;
+        this.validWeatherData = true;
+      } catch (error) {
+        // Si hay error
+        this.messageType = 'Error';
+        this.messageToDisplay = `¡ERROR! No se ha podido conseguir información meteorlógica de ${inputCity}!`;
+        console.log(error.message);
+        this.resetData();
+      } finally {
+        console.log('¡HTTP GET Listo!');
+      }
     },
     // Limpia los datos
     resetData() {
@@ -87,6 +125,8 @@ export default defineComponent({
         highTemperature: 0.0,
       };
       this.validWeatherData = false;
+      this.messageType = 'Info';
+      this.messageToDisplay = '';
     },
   },
 });

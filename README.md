@@ -39,7 +39,7 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
   - [Licencia](#licencia)
 
 ## Sobre el proyecto
-El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress dentro de Vue Test Utils.
+El objetivo de este proyecto es partir de una simple aplicación realizada en Vue.js que consulta el tiempo de una ciudad (buscador) usando OpenWeatherMap API y en base a ella, mostrar distintos formas de realizar los test usando Jest y Cypress dentro de Vue Test Utils. No es tanto el aspecto estético si no el interno, mostrando como realizar Test Unitarios, de Integración y E2E sobre una app Vue.js, donde se pueda ver cómo testear tanto un componente aislado y dentro de este sus propiedades y métodos, como la interrelación de distintos componentes así como la app como un todo. 
 
 Este proyecto puede verse como una continuación del contenido mostrado en:
 - [Testing JS con JEST](https://github.com/joseluisgs/testing-js-jest)

@@ -4,8 +4,8 @@ describe('Search.vue Test', () => {
     cy.visit('/'); // "baseUrl" definido en cypress.json
   });
 
-  it('Cuando se crea no es visible', () => {
-    cy.get('.banner').should('not.be.visible');
+  it('Cuando se crea es visible', () => {
+    cy.get('.weather-search').should('be.visible');
   });
 
   it('Renderiza Los elementos del formulario', () => {

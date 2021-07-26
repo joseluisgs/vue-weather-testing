@@ -10,6 +10,7 @@ Aplicación para consultar el tiempo usando Vue.js y OpenWeatherMap API y mostra
 ![Portada](https://i.imgur.com/gV4LZJZ.jpg)
 - [vue-weather-testing](#vue-weather-testing)
   - [Sobre el proyecto](#sobre-el-proyecto)
+  - [Despliegue](#despliegue)
   - [Testeando con Vue Test Utils](#testeando-con-vue-test-utils)
     - [Jest](#jest)
       - [ShallowMount vs Mount](#shallowmount-vs-mount)
@@ -43,6 +44,9 @@ El objetivo de este proyecto es partir de una simple aplicación realizada en Vu
 Este proyecto puede verse como una continuación del contenido mostrado en:
 - [Testing JS con JEST](https://github.com/joseluisgs/testing-js-jest)
 - [Testing JS con Cypress](https://github.com/joseluisgs/testing-js-cypress)
+
+## Despliegue
+El proyecto esta desplegado en: https://joseluisgs.github.io/vue-weather-testing
 
 ## Testeando con Vue Test Utils
 ### Jest

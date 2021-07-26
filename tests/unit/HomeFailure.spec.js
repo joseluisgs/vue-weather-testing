@@ -11,12 +11,17 @@ import Home from '@/views/Home.vue';
 // Espiamos la consola
 global.console.log = jest.fn();
 
-jest.mock('axios', () => ({
-  get: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
-}));
+jest.mock('axios');
+// jest.mock('axios', () => ({
+//   get: jest.fn().mockReturnValue(Promise.reject(new Error('error'))),
+// }));
 
 describe('Home.vue Test HTTP GET No Resuelta', () => {
   // Antes de cada test
+  beforeEach(() => {
+    axios.get.mockRejectedValueOnce(() => Promise.reject(new Error('error')));
+  });
+
   // Despues de cada test
   afterEach(() => {
     jest.resetModules();

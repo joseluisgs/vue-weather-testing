@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "tests/unit/Banner.spec.js", "tests/unit/Footer.spec.js", "tests/unit/Header.spec.js", "tests/unit/Search.spec.js", "tests/unit/Weather.spec.js"  ],
   "exclude": [
     "node_modules"
   ]
